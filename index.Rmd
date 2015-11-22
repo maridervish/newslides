@@ -1,0 +1,57 @@
+---
+title       : Russian foreign trade statistics
+subtitle    : Presentation of Application
+author      : Mari Dervish
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+--- bg:#EEE
+
+## General information about application
+
+If one needs to analyze Russian import/export data (for example to see how Russian food embargo affected trade volumes between countries), this application will show trade statistics in fast and easy way.
+
+This application plots trade statistics between Russia and other countries for period Jan2014-Jun2015.
+App is made in `shiny` package for `R`.
+Application can be run on RStudio's shiny server: https://mdervish.shinyapps.io/myApp
+
+Definetely there is room for significant improvement, but as it is a project for Coursera class, I decided to keep application easy. In the future I will add more features and data to use application in real life.
+
+--- bg:#EEE
+
+## How to use application
+
+On the left panel of application:
+
+> - Choose direction of trade flow (Import/Export)
+> - Choose country you are interested in
+> - Choose product category you are interested in
+
+> - Then go to tab 'Result' where you will find plot of trade statistics between Russia and chosen country for chosen parameters.
+
+--- bg:#EEE
+
+## Data structure
+
+Data is taken from open database of Russian Federal Customs Service.
+To reduce time for loading application for this class data was limited for only TOP-30 countries-partners of Russia
+
+Data structure:
+```{r data,echo=TRUE}
+impex <- read.csv("./top.csv")
+head(impex,3)
+```
+
+--- bg:#EEE
+
+## List of countries included
+
+As it explained before, data contains information only about TOP-30 Russian trade partners.
+List of countries:
+```{r countr,echo=TRUE}
+unique(impex$Country)
+```

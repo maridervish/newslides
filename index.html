@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Russian foreign trade statistics</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Russian foreign trade statistics">
+  <meta name="author" content="Mari Dervish">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Russian foreign trade statistics</h1>
+    <h2>Presentation of Application</h2>
+    <p>Mari Dervish<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#EEE;">
+  <hgroup>
+    <h2>General information about application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>If one needs to analyze Russian import/export data (for example to see how Russian food embargo affected trade volumes between countries), this application will show trade statistics in fast and easy way.</p>
+
+<p>This application plots trade statistics between Russia and other countries for period Jan2014-Jun2015.
+App is made in <code>shiny</code> package for <code>R</code>.
+Application can be run on RStudio&#39;s shiny server: <a href="https://mdervish.shinyapps.io/myApp">https://mdervish.shinyapps.io/myApp</a></p>
+
+<p>Definetely there is room for significant improvement, but as it is a project for Coursera class, I decided to keep application easy. In the future I will add more features and data to use application in real life.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:#EEE;">
+  <hgroup>
+    <h2>How to use application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>On the left panel of application:</p>
+
+<ul class = "build incremental">
+<li>Choose direction of trade flow (Import/Export)</li>
+<li>Choose country you are interested in</li>
+<li><p>Choose product category you are interested in</p></li>
+<li><p>Then go to tab &#39;Result&#39; where you will find plot of trade statistics between Russia and chosen country for chosen parameters.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:#EEE;">
+  <hgroup>
+    <h2>Data structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Data is taken from open database of Russian Federal Customs Service.
+To reduce time for loading application for this class data was limited for only TOP-30 countries-partners of Russia</p>
+
+<p>Data structure:</p>
+
+<pre><code class="r">impex &lt;- read.csv(&quot;./top.csv&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;./top.csv&#39;: No such file or
+## directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection
+</code></pre>
+
+<pre><code class="r">head(impex,3)
+</code></pre>
+
+<pre><code>##   X        Country Year       Period TradeFlow       Commodity    Value
+## 1 1         Sweden 2014   April 2014   Imports 01 Live animals  3414.35
+## 2 2 Czech Republic 2014 October 2014   Imports 01 Live animals 25666.63
+## 3 3          China 2014   March 2014   Imports 01 Live animals  2180.00
+##         date
+## 1 2014-04-01
+## 2 2014-10-01
+## 3 2014-03-01
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:#EEE;">
+  <hgroup>
+    <h2>List of countries included</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>As it explained before, data contains information only about TOP-30 Russian trade partners.
+List of countries:</p>
+
+<pre><code class="r">unique(impex$Country)
+</code></pre>
+
+<pre><code>##  [1] Sweden         Czech Republic China          Belarus       
+##  [5] Slovakia       France         Ukraine        Italy         
+##  [9] Kazakhstan     Germany        Hungary        Netherlands   
+## [13] United Kingdom Latvia         United States  Japan         
+## [17] Belgium        Lithuania      Singapore      Poland        
+## [21] Finland        Spain          Switzerland    Brazil        
+## [25] Estonia        Turkey         South Korea    Taiwan        
+## [29] India          Egypt         
+## 30 Levels: Belarus Belgium Brazil China Czech Republic Egypt ... United States
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='General information about application'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='How to use application'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data structure'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='List of countries included'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
